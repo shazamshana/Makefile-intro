@@ -1,0 +1,47 @@
+Makefiles 101
+Dr. Michael Scherger
+
+Contents of this subdirectory
+Makefiles.pptx - PowerPoint presentation presenting the basics of make.
+
+The following source code files are used in the examples.
+main.cpp
+fifo.h fifo.cpp
+opt.h opt.cpp
+lru.h lru.cpp
+rand.h rand.cpp
+test1.txt
+
+The following make files are used in the examples.
+one.mak
+two.mak
+three.mak
+four.mak
+Makefile
+
+Read/view the presentations on the UNIX/Linux make facility.  The first example
+is one.mak.  Using the 'cp' command, copy that file to a file named "Makefile" 
+(no quotes).  Then type 'make' to build the executable.  This will create a 
+dummy executable for you to try out.  The answers are all the same for each 
+algorithm.  The purpose is not the inner workings of the application program, 
+but rather learning how to build the application using make.
+
+Remember, make uses timestamps to determine which source code modules need to
+be compiled.  Only those source code files that have a later (more recent)
+timestamp than their corresponding object file or executable need to be
+compiled.  
+
+The UNIX/Linux command 'touch' is sometimes useful to check that your
+Makefile is working correctly.  The 'touch' command changes the modification
+and access times of a file without acutally editing the file.  This is useful
+for configuration management and version control.  The touch command works
+like this:
+
+unix$ touch anyfile.ext
+
+There are three more examples makefiles: two.mak, three.mak, and four.mak.
+Again, copy any of those files to a file named "Makefile" (no quotes) to try
+different things you can do with make.
+
+Good Luck.  Hope this helps.  If you have any questions, please feel free to
+contact me at m.scherger@tcu.edu.
