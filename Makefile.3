@@ -1,0 +1,39 @@
+# SIMPAGER Makefile
+# if target file is out of date, compile it
+# once it's up to date, it does the second task!
+
+# use make -n to debug... will TELL you what it's going to do, yet not actually do it
+
+# CXX: MACRO FOR THE DEFAULT NAME FOR THE C++ COMPLIER
+CXX = g++
+
+# option for the compiler
+CXXFLAGS = -O2
+
+# $^ - means "all the dependencies", it points up at the dependencies
+# $< - means "the first dependency"
+# $@ - means "the target name"
+
+# here, $@ could be replaced by simpager
+simpager: main.o fifo.o lru.o opt.o rand.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+main.o: main.cpp # you can replace $< with the main.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+# -c means compile only
+
+fifo.o: fifo.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+lru.o: lru.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+opt.o: opt.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+rand.o: rand.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+
+# (make clean) use the full path of the rm cmd instead of aliases... will remove the .o files (-f forces the rm)
+clean:
+	/bin/rm -f *.o simpager

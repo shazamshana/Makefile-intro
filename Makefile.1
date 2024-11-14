@@ -1,0 +1,33 @@
+# SIMPAGER Makefile
+# if target file is out of date, compile it
+# once it's up to date, it does the second task!
+
+
+# @echo will echo the output, yet not the command
+hello:
+	@echo "Hi, how are you?"
+	@echo "I am having fun with makefiles!"
+	@echo "Dr. Scherger is... the *BEST* instructor..."
+
+simpager: main.o fifo.o lru.o opt.o rand.o
+	g++ -o simpager main.o fifo.o lru.o opt.o rand.o
+
+main.o: main.cpp
+	g++ -c main.cpp
+# -c means compile only
+
+fifo.o: fifo.cpp
+	g++ -c fifo.cpp
+
+lru.o: lru.cpp
+	g++ -c lru.cpp
+
+opt.o: opt.cpp
+	g++ -c opt.cpp
+
+rand.o: rand.cpp
+	g++ -c rand.cpp
+
+# (make clean) use the full path of the rm cmd instead of aliases... will remove the .o files (-f forces the rm)
+clean:
+	/bin/rm -f *.o simpager
